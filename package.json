@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-ecommerce",
+  "version": "1.0.0",
+  "description": "Boilerplate of the e-commerce API's",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scriptclump/nodejs-ecommerce.git"
+  },
+  "keywords": [
+    "Boilerplate",
+    "E-commerce",
+    "API"
+  ],
+  "author": "Basant Kumar Sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scriptclump/nodejs-ecommerce/issues"
+  },
+  "homepage": "https://github.com/scriptclump/nodejs-ecommerce#readme"
+}
