@@ -1,13 +1,13 @@
 module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "@123",
-    DB: "nd_ecommerce",
-    dialect: "mysql",
+    HOST: process.env.DATABASE_HOST,
+    USER: process.env.DATABASE_USERNAME,
+    PASSWORD: process.env.DATABASE_PASSWORD,
+    DB: process.env.DATABASE_NAME,
+    dialect: process.env.DB_DIALECT,
     pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000, // Time in milliseconds
-      idle: 10000 // Time in milliseconds
+      max: process.env.DB_POOL_MAX,
+      min: process.env.DB_POOL_Min,
+      acquire: process.env.DB_POOL_ACQUIRE, // Time in milliseconds
+      idle: process.env.DB_POOL_IDLE // Time in milliseconds
     }
 };
