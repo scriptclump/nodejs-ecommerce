@@ -1,4 +1,7 @@
-app.get("/", (req, res) => {
+const EXPRESS     = require('express'), 
+      APP = EXPRESS();
+
+APP.get("/", (req, res) => {
     res.json({ message: "Welcome to E-commerce service." });
 });
 
