@@ -9,6 +9,17 @@ const   CHALK   = require('chalk'),
         APP       = EXPRESS(),
         CONGIF    = require('./app/config');
 
+var corsOptions = {
+    origin: "http://localhost:"+process.env.PORT;
+};
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+          
+
 // Load the MVC
 require('./auto_loader');
 
