@@ -5,9 +5,9 @@ module.exports = {
     DB: process.env.DATABASE_NAME,
     dialect: process.env.DB_DIALECT,
     pool: {
-      max: process.env.DB_POOL_MAX,
-      min: process.env.DB_POOL_Min,
-      acquire: process.env.DB_POOL_ACQUIRE, // Time in milliseconds
-      idle: process.env.DB_POOL_IDLE // Time in milliseconds
+      max: process.env.DB_POOL_MAX  | 0,
+      min: process.env.DB_POOL_Min | 0,
+      acquire: process.env.DB_POOL_ACQUIRE | 0, // Time in milliseconds
+      idle: process.env.DB_POOL_IDLE | 0 // Time in milliseconds
     }
-};
+}

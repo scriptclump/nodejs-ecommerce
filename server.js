@@ -1,7 +1,7 @@
 "use strict";
 
 // Imports the NodeJS packages
-require('dotenv').config()
+require('dotenv').config();
 const   CHALK       = require('chalk'),
         FIGLET      = require('figlet'),
         EXPRESS     = require('express'),
@@ -29,4 +29,4 @@ require('./auto_loader');
 const   SERVER_PORT   = CONGIF.port || process.env.PORT,
         SERVER        = APP.listen(SERVER_PORT)
 console.log(CHALK.blue.bold(FIGLET.textSync('Ecommerce')));
-console.log(CHALK.green.bold(`Server Started at port: ${SERVER_PORT}`));
+console.log(CHALK.green.bold(`Server Started at port: ${SERVER_PORT}`))
