@@ -1,2 +1,2 @@
-# Ecommerce NodeJS application
+# Ecommerce Boilerplate NodeJS Application
 E-commerce application using NodeJS
