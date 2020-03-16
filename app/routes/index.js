@@ -7,5 +7,5 @@ APP.get("/", (req, res) => {
 });
 
 // routes
-require('./auth.route')(app);
-require('./user.route')(app);
+require('./auth.route');
+require('./user.route');

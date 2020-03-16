@@ -1,8 +1,7 @@
-"use strict";
-const jwt = require("jsonwebtoken");
-const config = require("../config/auth.config.js");
-const db = require("../models");
-const User = db.user;
+const JWT    = require("jsonwebtoken"),
+      CONFIG = require("../config/auth.config"),
+      DB     = require("../models"),
+      USER   = DB.user;
 
 verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
@@ -13,10 +12,10 @@ verifyToken = (req, res, next) => {
     });
   }
 
-  jwt.verify(token, config.secret, (err, decoded) => {
+  JWT.verify(token, CONFIG.secret, (err, decoded) => {
     if (err) {
       return res.status(401).send({
-        message: "Unauthorized!"
+        message: "Unauthorized Access!"
       });
     }
     req.userId = decoded.id;
@@ -25,7 +24,7 @@ verifyToken = (req, res, next) => {
 };
 
 isAdmin = (req, res, next) => {
-  User.findByPk(req.userId).then(user => {
+  USER.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "admin") {
@@ -43,7 +42,7 @@ isAdmin = (req, res, next) => {
 };
 
 isModerator = (req, res, next) => {
-  User.findByPk(req.userId).then(user => {
+  USER.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "moderator") {
@@ -60,7 +59,7 @@ isModerator = (req, res, next) => {
 };
 
 isModeratorOrAdmin = (req, res, next) => {
-  User.findByPk(req.userId).then(user => {
+  USER.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "moderator") {
@@ -87,4 +86,5 @@ const authJwt = {
     isModerator: isModerator,
     isModeratorOrAdmin: isModeratorOrAdmin
 };
+
 module.exports = authJwt;
