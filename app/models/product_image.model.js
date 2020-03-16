@@ -1,5 +1,5 @@
 /* jshint indent: 2 */
-
+"use strict";
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('product_images', {
     pr_img_id: {

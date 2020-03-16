@@ -1,3 +1,4 @@
+"use strict";
 module.exports = {
     HOST: process.env.DATABASE_HOST,
     USER: process.env.DATABASE_USERNAME,

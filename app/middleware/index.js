@@ -1,3 +1,4 @@
+"use strict";
 const authJwt = require("./auth_jwt"),
       verifySignUp = require("./verify_signup");
 
@@ -5,4 +6,4 @@ const authJwt = require("./auth_jwt"),
 module.exports = {
   authJwt,
   verifySignUp
-};
+}

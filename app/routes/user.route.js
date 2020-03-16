@@ -1,3 +1,4 @@
+"use strict";
 const { authJwt } = require("../middleware");
 const controller = require("../controllers/user.controller.js");
 
@@ -29,4 +30,4 @@ module.exports = function(app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
-};
+}
