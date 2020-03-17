@@ -9,3 +9,4 @@ APP.get("/", (req, res) => {
 // routes
 require('./auth.route');
 require('./user.route');
+require('./category.route')
