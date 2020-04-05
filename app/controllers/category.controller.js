@@ -2,7 +2,9 @@ const db = require("../models/category.model"),
 CATEGORY = db.category,
 OP = db.Sequelize.Op;
 
-// Create and Save a new CATEGORY
+/**
+ * Create the Category
+ */
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.title) {
@@ -12,14 +14,14 @@ exports.create = (req, res) => {
       return;
     }
   
-    // Create a CATEGORY
+    // Prepare data for insert
     const category = {
       title: req.body.title,
       description: req.body.description,
       published: req.body.published ? req.body.published : false
     };
   
-    // Save CATEGORY in the database
+    // Save category in the database
     CATEGORY.create(category)
       .then(data => {
         res.send(data);
@@ -31,10 +33,12 @@ exports.create = (req, res) => {
         });
       });
 };
-// Create CATEGORY in Bulk
+/**
+ * Create category in Bulk
+ */
 exports.createAll = (req, res) => {
   var category = req.body.category;
-  // Save CATEGORY in the database
+  // Save category in the database
   CATEGORY.bulkCreate(category)
     .then(data => {
       res.send(data);
@@ -46,8 +50,9 @@ exports.createAll = (req, res) => {
       });
     });
 };
-
-// Retrieve all CATEGORYs from the database.
+/**
+ * Retrieve all categories from the database.
+ */
 exports.findAll = (req, res) => {
     const title = req.query.title;
     var condition = title ? { title: { [OP.like]: `%${title}%` } } : null;
@@ -63,8 +68,9 @@ exports.findAll = (req, res) => {
         });
     });
 };
-
-// Find a single CATEGORY with an id
+/**
+ * Find a category
+ */
 exports.findOne = (req, res) => {
     const id = req.params.id;
   
@@ -74,12 +80,13 @@ exports.findOne = (req, res) => {
         })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving CATEGORY with id=" + id
+          message: "Error retrieving category with id=" + id
         });
     });
 };
-
-// Update a CATEGORY by the id in the request
+/**
+ * Update a category
+ */
 exports.update = (req, res) => {
     const id = req.params.id;
   
@@ -89,22 +96,23 @@ exports.update = (req, res) => {
     .then(num => {
         if (num == 1) {
             res.send({
-            message: "CATEGORY was updated successfully."
+            message: "Category was updated successfully."
             });
         } else {
             res.send({
-            message: `Cannot update CATEGORY with id=${id}. Maybe CATEGORY was not found or req.body is empty!`
+            message: `Cannot update category with id=${id}. Maybe category was not found or req.body is empty!`
             });
         }
     })
     .catch(err => {
         res.status(500).send({
-            message: "Error updating CATEGORY with id=" + id
+            message: "Error updating category with id=" + id
         });
     });
 };
-
-// Delete a CATEGORY with the specified id in the request
+/**
+ * Delete a category
+ */
 exports.delete = (req, res) => {
     const id = req.params.id;
   
@@ -114,29 +122,30 @@ exports.delete = (req, res) => {
     .then(num => {
         if (num == 1) {
           res.send({
-            message: "CATEGORY was deleted successfully!"
+            message: "Category was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete CATEGORY with id=${id}. Maybe CATEGORY was not found!`
+            message: `Cannot delete category with id=${id}. Maybe category was not found!`
           });
         }
     })
     .catch(err => {
         res.status(500).send({
-          message: "Could not delete CATEGORY with id=" + id
+          message: "Could not delete category with id=" + id
         });
     });
 };
-
-// Delete all CATEGORYs from the database.
+/**
+ * Delete all categories
+ */
 exports.deleteAll = (req, res) => {
     CATEGORY.destroy({
       where: {},
       truncate: false
     })
     .then(nums => {
-        res.send({ message: `${nums} CATEGORYs were deleted successfully!` });
+        res.send({ message: `${nums} categories were deleted successfully!` });
       })
     .catch(err => {
         res.status(500).send({
@@ -146,7 +155,9 @@ exports.deleteAll = (req, res) => {
     });
 };
 
-// Find all published CATEGORYs
+/**
+ * Find all published categories
+ */ 
 exports.findAllPublished = (req, res) => {
     CATEGORY.findAll({ where: { published: true } })
       .then(data => {
