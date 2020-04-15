@@ -29,7 +29,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the CATEGORY."
+            err.message || "Some error occurred while creating the category."
         });
       });
 };
@@ -46,7 +46,7 @@ exports.createAll = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the CATEGORY."
+          err.message || "Some error occurred while creating the Category."
       });
     });
 };
